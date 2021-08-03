@@ -49,6 +49,9 @@ module.exports = function createQueryBuilder({ model, strapi }) {
   const wrapTransaction = (fn, { transacting } = {}) => {
     const db = strapi.connections[model.connection];
 
+    if (_.get(db, 'context.client.config.client') === 'mssql') {
+      return fn(transacting);
+    }
     if (transacting) return fn(transacting);
     return db.transaction(trx => fn(trx));
   };
