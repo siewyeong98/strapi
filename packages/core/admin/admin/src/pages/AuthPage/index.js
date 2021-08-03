@@ -288,26 +288,25 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
   }
 
   return (
-    <Padded bottom size="md">
+    <Component
+      {...rest}
+      fieldsToDisable={fieldsToDisable}
+      formErrors={formErrors}
+      inputsPrefix={inputsPrefix}
+      modifiedData={modifiedData}
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+      requestError={requestError}
+    />
+  );
+};
+/* <Padded bottom size="md">
       <PageTitle title={upperFirst(authType)} />
       <NavTopRightWrapper>
         <LocaleToggle isLogged className="localeDropdownMenuNotLogged" />
       </NavTopRightWrapper>
-      <BaselineAlignment top size="78px">
-        <Component
-          {...rest}
-          fieldsToDisable={fieldsToDisable}
-          formErrors={formErrors}
-          inputsPrefix={inputsPrefix}
-          modifiedData={modifiedData}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          requestError={requestError}
-        />
-      </BaselineAlignment>
-    </Padded>
-  );
-};
+      <BaselineAlignment top size="78px"></BaselineAlignment>
+    </Padded> */
 
 AuthPage.defaultProps = {
   hasAdmin: false,
